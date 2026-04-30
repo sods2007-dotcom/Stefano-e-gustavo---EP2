@@ -59,3 +59,25 @@ def calcula_pontos_sequencia_alta(dados):
     if 2 in dados and 3 in dados and 4 in dados and 5 in dados and 6 in dados:
         return 30
     return 0
+
+def calcula_pontos_full_house(dados):
+    contagens = {}
+    for dado in dados:
+        if dado not in contagens:
+            contagens[dado] = 0
+        contagens[dado] += 1
+    
+    tem_tres = False
+    tem_dois = False
+    for valor in contagens:
+        if contagens[valor] == 3:
+            tem_tres = True
+        if contagens[valor] == 2:
+            tem_dois = True
+    
+    if tem_tres and tem_dois:
+        soma = 0
+        for dado in dados:
+            soma += dado
+        return soma
+    return 0
